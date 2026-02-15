@@ -227,7 +227,7 @@ body {
 }
 
 .teaser-panel {
-  background: #eaeaea;
+  background: rgb(238, 238, 238);
   padding: 1rem 2rem 1rem 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
@@ -240,7 +240,6 @@ body {
 
 .grey-section {
   background: #f6f6f6;     /* full-width grey */
-  padding: 3rem 0;         /* vertical spacing */
 }
 
 /*
