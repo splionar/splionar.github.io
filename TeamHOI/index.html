@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="TeamHOI">
+  <meta name="keywords" content="TeamHOI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TeamHOI: Learning a Unified Policy for Cooperative Human-Object Interactions with Any Team Size</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">TeamHOI: Learning a Unified Policy for Cooperative Human-Object Interactions with Any Team Size</h1>
+            <div class="is-size-6 publication-authors" style="margin-top:-0.8rem;">
+              <span class="author-block">
+                <a href="https://splionar.github.io/" target="_blank" rel="noopener noreferrer">Stefan Lionar<sup>1,2</sup></a></span>
+              <span class="author-block">
+                <a href="https://www.comp.nus.edu.sg/~leegh/" target="_blank" rel="noopener noreferrer">Gim Hee Lee<sup>2</sup></a></span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><a href="https://www.garena.sg/" target="_blank"><sup>1</sup>Garena</a></span>
+              <span class="author-block"><a href="https://www.comp.nus.edu.sg/" target="_blank"><sup>2</sup>National University of Singapore</a></span>
+            </div>
+
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+
+                    <span class="link-block">
+                      <a href="https://splionar.github.io/TeamHOI"
+                        class="external-link button is-tiny">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="https://splionar.github.io/TeamHOI"
+                        class="external-link button is-tiny">
+                        <span class="icon">
+                          <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                      </a>
+                    </span>
+
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<section class="hero teaser" style="margin-top:-2.5rem;">
+
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+
+    <div class="teaser-panel" style="padding: 1.5rem 0.5rem 1.5rem 0.5rem;">
+
+          <!-- Image -->
+          <img src="static/images/teamhoi_teaser_compressed.png"
+              alt="TeamHOI"
+              style="display:block; margin:0 auto 1.5rem auto;"
+              width="94%">
+
+          <!-- Text -->
+          <div class="columns is-centered has-text-centered">
+            <div class="content" style="max-width: 750px; margin: 0rem auto;">
+              <p>
+                <strong>TeamHOI</strong> is a novel framework for learning a unified decentralized policy for cooperative human-object interactions (HOI)
+                that works seamlessly across varying team sizes and object configurations.
+              </p>
+            </div>
+
+        </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="hero teaser" style="margin-top:-2rem;">
+
+    <div class="container is-max-desktop">
+    <div class="hero-body">
+
+  <!-- gray panel -->
+  <div class="teaser-panel">
+
+  <!-- ✅ Videos -->
+<div class="columns is-centered">
+  <div class="column is-one-third has-text-centered">
+    <p class="video-label">2 agents</p>
+    <video controls autoplay muted loop playsinline style="width:100%; border-radius:8px;">
+      <source src="static/videos/teamhoi_blender_02.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="column is-one-third has-text-centered">
+    <p class="video-label">4 agents</p>
+    <video controls autoplay muted loop playsinline style="width:100%; border-radius:8px;">
+      <source src="static/videos/teamhoi_blender_04.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="column is-one-third has-text-centered">
+    <p class="video-label">8 agents</p>
+    <video controls autoplay muted loop playsinline style="width:100%; border-radius:8px;">
+      <source src="static/videos/teamhoi_blender_08.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+    
+    </div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="section grey-section">
+  <div class="container is-max-desktop">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+            <p>
+              Physics-based humanoid control has achieved remarkable progress in enabling realistic and high-performing single-agent behaviors, yet extending 
+              these capabilities to cooperative human-object interaction (HOI) remains challenging. We present TeamHOI, a framework that enables a single 
+              decentralized policy to handle cooperative HOIs across any number of cooperating agents. Each agent operates using local observations while attending 
+              to other teammates through a Transformer-based policy network with teammate tokens, allowing scalable coordination across variable team sizes. 
+              To enforce motion realism while addressing the scarcity of cooperative HOI data, we further introduce a masked Adversarial Motion Prior (AMP) strategy
+               that uses single-human reference motions while masking object-interacting body parts during training. The masked regions are then guided through task 
+               rewards to produce diverse and physically plausible cooperative behaviors. We evaluate TeamHOI on a challenging cooperative carrying task involving two
+                to eight humanoid agents and varied object geometries. Finally, to promote stable carrying, we design a team-size- and shape-agnostic formation reward.
+                 TeamHOI achieves high success rates and demonstrates coherent cooperation across diverse configurations with a single policy.
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Approach. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Pipeline</h2>
+
+           <img src="static/images/pipeline_teamhoi.png" alt="Pipeline" width="100%" style="margin: 2rem 0;">
+
+          <div class="content has-text-justified">
+            <p>
+             A transformer-based policy network enables coordination between the observing agent
+            (green humanoid) and its teammates (grey humanoids) through alternating self- and cross-attention layers. By training across diverse
+            team-size environments, the framework learns a unified policy that works across different team configurations. To maintain motion realism
+            and enhance skill diversity, a masked AMP strategy blends full-body and masked discriminators based on object interaction.
+               
+            </p>
+            
+          </div>
+                    
+                  
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!--
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{lionar2023tba,
+  author    = {Lionar, Stefan and Xu, Xiangyu and Lin, Min and Lee, Gim Hee},
+  title     = {TBA},
+  journal   = {TBA},
+  year      = {2023}
+}</code></pre>
+    </div>
+  </section>
+  -->
+
+</body>
+
+</html>
