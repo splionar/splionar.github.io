@@ -241,6 +241,79 @@ body {
 .grey-section {
   background: #f6f6f6;     /* full-width grey */
 }
+.video-slider {
+  position: relative;
+  max-width: 100%;
+  margin-top: 1.5rem;
+}
+
+.video-slider .slides {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* NEW: the moving track */
+.video-slider .track {
+  display: flex;
+  transition: transform 350ms ease;
+  will-change: transform;
+}
+
+/* each slide takes full width */
+.video-slider .slide {
+  flex: 0 0 100%;
+}
+
+.video-slider video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+/* arrows + dots same as before */
+.video-slider .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 1.8rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 50;
+}
+
+.video-slider .prev { left: 10px; }
+.video-slider .next { right: 10px; }
+
+.video-slider .dots {
+  text-align: center;
+  margin-top: 0.7rem;
+}
+
+.video-slider .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.video-slider .dot.active { background: #333; }
+
+
+.video-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.3px;
+  color: #222;
+}
 
 /*
 tr {

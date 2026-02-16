@@ -3,42 +3,9 @@
 
 function main() {
   setupTabs();
-  setupModals();
-  setupImageLoading();
+  setupVideoSlider(); 
 }
 
-function setupImageLoading() {
-  const groups = [
-    'iphone',
-    'dalle2',
-    'co3d',
-    'imagenet',
-    'hypersim',
-    'taskonomy',
-  ];
-
-  // When we click on a tab, schedule its images for loading.
-  for (let group of groups) {
-    $('li[data-tab="' + group + '"]').click(() => {
-      loadImages(group);
-    });
-  }
-
-  // Start loading image groups in order.
-  // This is pretty ugly! I should learn how to use promises to avoid these
-  // nasty nested callbacks!
-  loadImages('iphone', function() {
-    loadImages('dalle2', function() {
-      loadImages('co3d', function() {
-        loadImages('imagenet', function() {
-          loadImages('hypersim', function() {
-            loadImages('taskonomy');
-          });
-        });
-      });
-    });
-  });
-}
 
 let _loaded_groups = new Set();
 
@@ -75,6 +42,69 @@ function loadImages(group, cb = () => {}) {
   });
 }
 
+function setupVideoSlider() {
+  const $slider = $('#results-slider');
+  if ($slider.length === 0) return;
+
+  const $slides = $slider.find('.slide');
+  const $track  = $slider.find('.track');
+  const $prev   = $slider.find('.prev');
+  const $next   = $slider.find('.next');
+  const $dotsContainer = $slider.find('.dots');
+
+  let current = 0;
+
+  // Build dots
+  $dotsContainer.empty();
+  $slides.each((i) => {
+    const $dot = $('<span class="dot"></span>');
+    $dot.on('click', () => showSlide(i));
+    $dotsContainer.append($dot);
+  });
+  const $dots = $dotsContainer.find('.dot');
+
+  function pauseAllExcept(idx) {
+    $slides.each((i, el) => {
+      const v = $(el).find('video').get(0);
+      if (!v) return;
+      if (i !== idx) {
+        v.pause();
+        v.currentTime = 0; // optional
+      }
+    });
+  }
+
+  function playActive(idx) {
+    const v = $slides.eq(idx).find('video').get(0);
+    if (v) {
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    }
+  }
+
+  function showSlide(index) {
+    const n = $slides.length;
+    current = (index + n) % n;
+
+    // Move track
+    $track.css('transform', `translateX(${-100 * current}%)`);
+
+    // Update dots
+    $dots.removeClass('active');
+    $dots.eq(current).addClass('active');
+
+    pauseAllExcept(current);
+    playActive(current);
+  }
+
+  $prev.on('click', () => showSlide(current - 1));
+  $next.on('click', () => showSlide(current + 1));
+
+  // Init
+  showSlide(0);
+}
+
+
 
 function openModal(elem) {
   $(elem).addClass('is-active');
@@ -89,84 +119,6 @@ function closeModal(elem) {
 }
 
 
-function setupModals() {
-  // Add click events on buttons to open the modal
-  $('.js-modal-trigger').click(function() {
-    const modal_id = $(this).data('target');
-    const modal = document.getElementById(modal_id);
-    const scene_dir = 'static/resources/' + $(this).data('path');
-    const pc_path = scene_dir + '/pointcloud.json';
-    const fmt_path = scene_dir + '/fmt.json';
-    openModal(modal);
-    $.getJSON(pc_path, function(data) {
-      // console.log(data);
-      const plot_data = [
-        {
-          type: "scatter3d",
-          mode: "markers",
-          x: data.x,
-          y: data.y,
-          z: data.z,
-          marker: {
-            size: 3,
-            color: data.color,
-          }
-        }
-      ];
-      const layout = {
-        height: 800,
-        width: 800,
-        margin: {
-          l: 0,
-          r: 0,
-        },
-        scene: {
-          aspectmode: 'cube',
-          xaxis: {
-            range: data.xaxis_range,
-            showgrid: false,
-            zeroline: false,
-            showline: false,
-            showticklabels: false,
-            showaxeslabels: false,
-          },
-          yaxis: {
-            range: data.yaxis_range,
-            showgrid: false,
-            zeroline: false,
-            showline: false,
-            showticklabels: false,
-            showaxeslabels: false,
-          },
-          zaxis: {
-            range: data.zaxis_range,
-            showgrid: false,
-            zeroline: false,
-            showline: false,
-            showticklabels: false,
-            showaxeslabels: false,
-          },
-          camera: {
-            up: {
-              x: 0.0,
-              y: 1.0,
-              z: 0.0,
-            }
-          }
-        }
-      }
-      $('#plot-loading-div').hide();
-      $('#plot-div').show();
-      Plotly.newPlot('plot-div', plot_data, layout);
-    });
-  });
-
-  $('.modal-background,.modal-close,.modal-card-head,.delete,.modal-card-front').click(function() {
-    const modal = this.closest('.modal');
-    closeModal(modal);
-  });
-}
-
 
 function setupTabs() {
   // Set up click handlers for the tabs
@@ -180,5 +132,9 @@ function setupTabs() {
     $('div[data-content="' + tab + '"]').addClass('is-active');
   });
 }
+
+
+
+
 
 $(document).ready(main);
