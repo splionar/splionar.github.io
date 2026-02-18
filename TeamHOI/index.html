@@ -210,7 +210,6 @@
 
 
 <!-- ================= RESULTS ================= -->
-<!-- ================= RESULTS ================= -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -221,12 +220,11 @@
         <!-- Global description -->
         <p style="margin:0 auto 1.2rem auto; text-align: justify;">
           We evaluate TeamHOI across varying team sizes from 2 to 8 humanoid agents and object shapes.
-          A single unified decentralized policy demonstrates
-          scalable and stable cooperative interactions for all configurations.
+          A single unified decentralized policy executes effective coordinations for all configurations with >97.5% success rates.
         </p>
 
         <!-- Slider -->
-        <div class="video-slider" id="results-slider">
+        <div class="video-slider js-video-slider">
 
           <div class="slides">
             <div class="track">
@@ -303,6 +301,281 @@
     </div>
   </div>
 </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Approach. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+
+           <img src="static/images/success_rate_team_size_plot_wider.png" alt="Plot" width="80%" style="margin: 2rem 0; margin-top:-2.0rem;">
+
+          <div class="content has-text-justified">
+              <p>
+              We evaluate coordination performance under increased task difficulty, where the table weight is scaled by 5×.
+              The success rate rises consistently with team size, demonstrating that larger teams provide greater collective capability to handle heavy loads.
+              This trend indicates that the learned policy effectively distributes effort across agents and scales to more demanding cooperative scenarios.
+              </p>
+
+                          
+          </div>
+                    
+                  
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+
+        <!-- Global description -->
+        <p style="margin:0 auto 1.2rem auto; text-align: justify; margin-top:-4.0rem;">
+          Our policy also generalizes to unseen object scales
+          and larger team configurations. Below, we present zero-shot generalization results with 12 and 16 agents on large object geometries.
+        </p>
+
+        <!-- Slider -->
+        <div class="video-slider js-video-slider">
+
+          <div class="slides">
+            <div class="track">
+
+              <!-- 2 agents -->
+              <div class="slide">
+                <div class="video-title">12 Agents & Large Object</div>
+                <video controls autoplay muted loop playsinline>
+                  <source src="static/videos/ours_12Ag_zeroshot_IsaacGym.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- 3 agents -->
+              <div class="slide">
+                <div class="video-title">16 Agents & Large Object</div>
+                <video controls autoplay muted loop playsinline>
+                  <source src="static/videos/ours_16Ag_zeroshot_IsaacGym.mp4" type="video/mp4">
+                </video>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <button class="nav prev" type="button" aria-label="Previous">&#10094;</button>
+          <button class="nav next" type="button" aria-label="Next">&#10095;</button>
+
+          <!-- Dots -->
+          <div class="dots"></div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= COMPARISON TO BASELINES ================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3">Comparison to Baselines</h2>
+
+        <p style="margin:0 auto 1.2rem auto; text-align: justify;">
+         We compare TeamHOI against CooHOI, a cooperative HOI framework that solely relies on object dynamics as an implicit 
+         communication channel between agents and necessitates manual per-agent contact assignment. To adapt CooHOI to our task setting, we construct a modified variant, 
+         CooHOI*, and train separate models for each team-size configuration following the original CooHOI training pipeline. 
+         Specifically, we train three variants: CooHOI*-2, CooHOI*-4, and CooHOI*-8, where the suffix indicates the number of agents used during cooperative training.
+         The results below present rollouts across different team configurations.
+        </p>
+
+        <div class="wide-panel-wrapper">
+        <div class="teaser-panel" style="padding: 0rem 1.5rem 1.5rem 1.5rem;">
+
+        <!-- Slider 1 -->
+        <div class="video-slider js-video-slider">
+          <div class="slides">
+            <div class="track">
+              
+
+              <div class="slide">
+                 <h3 class="title is-5" style="margin-top:1.0rem;">CooHOI*-2</h3>
+                <div class="triple-grid">
+                  <div class="triple-item">
+                    <div class="video-title">2 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B2_2Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">4 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B2_4Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">8 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B2_8Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+
+
+            <p class="slide-caption">
+            CooHOI*-2 performs reliably for 2 agents, but exhibits competing and unstable behaviors
+            as the team size increases beyond its training configuration.
+          </p>
+
+              </div>
+
+              <div class="slide">
+                 <h3 class="title is-5" style="margin-top:1.0rem;">CooHOI*-4</h3>
+                <div class="triple-grid">
+                  <div class="triple-item">
+                    <div class="video-title">2 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B4_2Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">4 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B4_4Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">8 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B4_8Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+
+                <p class="slide-caption">
+            CooHOI*-4 performs relatively well in coordinating up to the 4-agent configuration, but becomes unstable with large team sizes.
+          </p>
+
+
+              </div>
+
+                <div class="slide">
+                 <h3 class="title is-5" style="margin-top:1.0rem;">CooHOI*-8</h3>
+                <div class="triple-grid">
+                  <div class="triple-item">
+                    <div class="video-title">2 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B8_2Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">4 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B8_4Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">8 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/B8_8Ag_IsaacGym.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+
+                <p class="slide-caption">
+            CooHOI*-8 struggles to coordinate effectively among agents, even under its native team-size setup.
+            The interactions often produce conflicting forces.
+          </p>
+
+
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <button class="nav prev" type="button" aria-label="Previous">&#10094;</button>
+          <button class="nav next" type="button" aria-label="Next">&#10095;</button>
+          <div class="dots"></div>
+        </div>
+
+      </div>
+
+
+
+
+
+
+        <div class="wide-panel-wrapper">
+        <div class="teaser-panel" style="padding: 0rem 1.5rem 1.5rem 1.5rem;">
+
+        <!-- Slider 1 -->
+        <div class="video-slider js-video-slider">
+          <div class="slides">
+            <div class="track">
+              
+
+              <div class="slide">
+                 <h3 class="title is-5" style="margin-top:1.0rem;">Ours</h3>
+                <div class="triple-grid">
+                  <div class="triple-item">
+                    <div class="video-title">2 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/ours_2Ag_IsaacGym_C.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">4 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/ours_4Ag_IsaacGym_C.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="triple-item">
+                    <div class="video-title">8 Agents</div>
+                    <video controls autoplay muted loop playsinline>
+                      <source src="static/videos/ours_8Ag_IsaacGym_C.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+
+
+            <p class="slide-caption">
+            TeamHOI enables stable coordination across varying team configurations. Importantly, unlike CooHOI* 
+            which requires privileged information on per-agent contact assignment, our method allows agents to autonomously coordinate their walking trajectories
+             and settle into stable lifting formations.
+          </p>
+
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
 
 
 

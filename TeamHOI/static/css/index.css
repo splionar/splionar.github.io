@@ -230,7 +230,7 @@ body {
   background: rgb(238, 238, 238);
   padding: 1rem 2rem 1rem 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
 .video-label {
@@ -314,6 +314,54 @@ body {
   letter-spacing: 0.3px;
   color: #222;
 }
+
+
+.triple-grid {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.triple-item {
+  flex: 1 1 0;
+}
+
+.triple-item video {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* mobile: stack */
+@media (max-width: 900px) {
+  .triple-grid {
+    flex-direction: column;
+  }
+}
+
+.slide-caption {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.wide-panel-wrapper {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1300px;     /* choose your desired max width */
+  max-width: 95vw;   /* responsive */
+}
+
+.wide-panel {
+  width: 100%;
+}
+
+
 
 /*
 tr {

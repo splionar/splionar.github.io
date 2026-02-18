@@ -1,11 +1,9 @@
 
-
-
 function main() {
   setupTabs();
-  setupVideoSlider(); 
+  setupAllVideoSliders();
+  setupTheaterMode();
 }
-
 
 let _loaded_groups = new Set();
 
@@ -41,83 +39,62 @@ function loadImages(group, cb = () => {}) {
     img.src = url;
   });
 }
+function setupAllVideoSliders() {
+  $('.js-video-slider').each(function() {
+    const $slider = $(this);
+    const $slides = $slider.find('.slide');
+    const $track  = $slider.find('.track');
+    const $prev   = $slider.find('.prev');
+    const $next   = $slider.find('.next');
+    const $dotsContainer = $slider.find('.dots');
 
-function setupVideoSlider() {
-  const $slider = $('#results-slider');
-  if ($slider.length === 0) return;
+    let current = 0;
 
-  const $slides = $slider.find('.slide');
-  const $track  = $slider.find('.track');
-  const $prev   = $slider.find('.prev');
-  const $next   = $slider.find('.next');
-  const $dotsContainer = $slider.find('.dots');
-
-  let current = 0;
-
-  // Build dots
-  $dotsContainer.empty();
-  $slides.each((i) => {
-    const $dot = $('<span class="dot"></span>');
-    $dot.on('click', () => showSlide(i));
-    $dotsContainer.append($dot);
-  });
-  const $dots = $dotsContainer.find('.dot');
-
-  function pauseAllExcept(idx) {
-    $slides.each((i, el) => {
-      const v = $(el).find('video').get(0);
-      if (!v) return;
-      if (i !== idx) {
-        v.pause();
-        v.currentTime = 0; // optional
-      }
+    $dotsContainer.empty();
+    $slides.each((i) => {
+      const $dot = $('<span class="dot"></span>');
+      $dot.on('click', () => showSlide(i));
+      $dotsContainer.append($dot);
     });
-  }
+    const $dots = $dotsContainer.find('.dot');
 
-  function playActive(idx) {
-    const v = $slides.eq(idx).find('video').get(0);
-    if (v) {
-      const p = v.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
+    function pauseAllExcept(idx) {
+      $slides.each((i, el) => {
+        const vids = $(el).find('video').toArray();
+        vids.forEach((v) => {
+          if (i !== idx) {
+            v.pause();
+            v.currentTime = 0;
+          }
+        });
+      });
     }
-  }
 
-  function showSlide(index) {
-    const n = $slides.length;
-    current = (index + n) % n;
+    function playActive(idx) {
+      // play all videos in active slide
+      $slides.eq(idx).find('video').each((_, v) => {
+        const p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      });
+    }
 
-    // Move track
-    $track.css('transform', `translateX(${-100 * current}%)`);
+    function showSlide(index) {
+      const n = $slides.length;
+      current = (index + n) % n;
 
-    // Update dots
-    $dots.removeClass('active');
-    $dots.eq(current).addClass('active');
+      $track.css('transform', `translateX(${-100 * current}%)`);
+      $dots.removeClass('active').eq(current).addClass('active');
 
-    pauseAllExcept(current);
-    playActive(current);
-  }
+      pauseAllExcept(current);
+      playActive(current);
+    }
 
-  $prev.on('click', () => showSlide(current - 1));
-  $next.on('click', () => showSlide(current + 1));
+    $prev.off('click').on('click', () => showSlide(current - 1));
+    $next.off('click').on('click', () => showSlide(current + 1));
 
-  // Init
-  showSlide(0);
+    showSlide(0);
+  });
 }
-
-
-
-function openModal(elem) {
-  $(elem).addClass('is-active');
-  $('#plot-loading-div').show();
-  $('#plot-div').hide();
-}
-
-
-function closeModal(elem) {
-  $(elem).removeClass('is-active');
-  $('#plot-div').empty();
-}
-
 
 
 function setupTabs() {
