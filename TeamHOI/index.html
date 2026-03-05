@@ -284,7 +284,7 @@
   </div>
 
   <!-- BASELINE SLIDER -->
-  <div class="tldrr" style="max-width: 1300px; padding-top: 0px;">
+  <div class="tldrr" style="padding-top: 0px;">
 
     <div class="video-slider js-video-slider">
       <div class="slides">
@@ -416,42 +416,52 @@
 
 
   <!-- OUR METHOD -->
-  <div class="tldrr" style="max-width: 1300px; padding-top: 0px;">
+  <div class="tldrr" style="padding-top: 0px;">
 
-    <h3 style="text-align:center; margin-top: 16px;">TeamHOI (Ours)</h3>
+    <h3 style="text-align:center; margin-top: 16px;">Ours</h3>
 
-    <div class="video-grid video-grid--compare">
+    <div class="video-slider js-video-slider" style="margin-top: -24px;">
 
-      <div class="video-item video-item--compare">
-        <div class="video-label">2 Agents</div>
-        <video controls autoplay muted loop playsinline>
-          <source src="static/videos/ours_2Ag_IsaacGym_C.mp4">
-        </video>
-      </div>
+    <div class="slides">
+        <div class="track">
+          <div class="slide">
+                  <div class="video-grid video-grid--compare">
 
-      <div class="video-item video-item--compare">
-        <div class="video-label">4 Agents</div>
-        <video controls autoplay muted loop playsinline>
-          <source src="static/videos/ours_4Ag_IsaacGym_C.mp4">
-        </video>
-      </div>
+                    <div class="video-item video-item--compare">
+                      <div class="video-label">2 Agents</div>
+                      <video controls autoplay muted loop playsinline>
+                        <source src="static/videos/ours_2Ag_IsaacGym_C.mp4">
+                      </video>
+                    </div>
 
-      <div class="video-item video-item--compare">
-        <div class="video-label">8 Agents</div>
-        <video controls autoplay muted loop playsinline>
-          <source src="static/videos/ours_8Ag_IsaacGym_C.mp4">
-        </video>
-      </div>
+                    <div class="video-item video-item--compare">
+                      <div class="video-label">4 Agents</div>
+                      <video controls autoplay muted loop playsinline>
+                        <source src="static/videos/ours_4Ag_IsaacGym_C.mp4">
+                      </video>
+                    </div>
 
+                    <div class="video-item video-item--compare">
+                      <div class="video-label">8 Agents</div>
+                      <video controls autoplay muted loop playsinline>
+                        <source src="static/videos/ours_8Ag_IsaacGym_C.mp4">
+                      </video>
+                    </div>
+
+                  </div>
+
+            <p class="secondary" style=" margin-top:24px; text-align:center;">
+              TeamHOI enables stable coordination across varying team configurations. Unlike CooHOI*,
+              which requires privileged information on per-agent contact assignment, our method allows
+              agents to autonomously coordinate walking trajectories and settle into stable lifting formations.
+            </p>
+    </div>
+    </div>
     </div>
 
-    <p class="secondary" style=" margin-top:24px; text-align:center;">
-      TeamHOI enables stable coordination across varying team configurations. Unlike CooHOI*,
-      which requires privileged information on per-agent contact assignment, our method allows
-      agents to autonomously coordinate walking trajectories and settle into stable lifting formations.
-    </p>
-
   </div>
+</div>
+  
 
 </section>
 
@@ -479,9 +489,9 @@
   <div class="footer-inner">
 
     <div class="template-credit">
-      <p class="template-line">Want a project page like this?</p>
+      <!-- <p class="template-line">Want a project page like this?</p>-->
       <a href="https://github.com/seemandhar/paper-template" target="_blank" class="template-btn">
-        <i class="fab fa-github"></i><span>Use this template</span>
+        <i class="fab fa-github"></i><span>Project page template</span>
         <i class="fas fa-arrow-right" style="font-size:11px;opacity:0.6;"></i>
       </a>
       <p class="template-desc">Free, responsive, built for CVPR / ICCV / ECCV / NeurIPS project pages.</p>
