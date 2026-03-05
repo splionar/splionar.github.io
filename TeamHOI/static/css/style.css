@@ -68,10 +68,10 @@ body {
 
 .hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(28px, 5vw, 38px);
+  font-size: clamp(24px, 5vw, 34px);
   font-weight: 700;
   line-height: 1.15;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto 10px;
 }
 
